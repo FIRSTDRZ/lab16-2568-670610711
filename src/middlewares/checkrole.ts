@@ -7,9 +7,8 @@ export const checkRoles = (
   res: Response,
   next: NextFunction
 ) => {
-  
+  const payload = req.user;
   const token = req.token;
-  
   const user = users.find((u: User) => u.username === payload?.username);
   if (!user) {
     return res.status(401).json({
